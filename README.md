@@ -13,6 +13,7 @@ This is a personal project built as part of my transition from generalist data s
 Countries
 
 - QGIS application
+- Email for Landscan Global population data
 
 Webapp
 
@@ -26,23 +27,26 @@ Countries
 - Install QGIS, e.g., QGIS-LTR 3.34
 - Create QGIS project
 - Download data
-  - Natural Earth
-    - `ne_10m_admin_0_countries`
-    - `ne_10m_admin_1_states_provinces`
-    - `ne_10m_populated_places_simple`
-    - `ne_10m_urban_areas`
-    - `ne_10m_railroads`
-    - `ne_10m_roads`
-    - `ne_10m_lakes`
-    - `ne_10m_rivers_lake_centerlines`
-    - `HYP_SR_HR`
-    - `SR_HR`
-  - Landscan population density
-    - `landscan-global-2023-colorized`
-  - Daylightmap Landcover 
-    - `low`
-  - Climate zones
-    - `koppen_geiger_0p00833333`
+  - Natural Earth from https://www.naturalearthdata.com/downloads: navigate to below names, unzip downloaded directories
+    - `ne_10m_admin_0_countries.shp` (+ files associated to .shp shapefiles)
+    - `ne_10m_admin_1_states_provinces.shp`
+    - `ne_10m_populated_places_simple.shp`
+    - `ne_10m_urban_areas.shp`
+    - `ne_10m_railroads.shp`
+    - `ne_10m_roads.shp`
+    - `ne_10m_lakes.shp`
+    - `ne_10m_rivers_lake_centerlines.shp`
+    - `HYP_SR_HR.tif`
+    - `SR_HR.tif`
+  - Landscan global population density from https://landscan.ornl.gov -> Download (requires email)
+    - `landscan-global-2023-colorized.tif`
+  - Daylightmap Landcover from https://daylightmap.org/2023/10/11/landcover.html
+    - https://daylight-openstreetmap.s3.us-west-2.amazonaws.com/landcover/low.shp
+    - https://daylight-openstreetmap.s3.us-west-2.amazonaws.com/landcover/low.dbf
+    - https://daylight-openstreetmap.s3.us-west-2.amazonaws.com/landcover/low.prj
+    - https://daylight-openstreetmap.s3.us-west-2.amazonaws.com/landcover/low.shx
+  - Climate zones from https://www.gloh2o.org/koppen -> https://figshare.com/ndownloader/files/45057352
+    - `1991_2020/koppen_geiger_0p00833333.tif`
 - Add as layers to project using GUI
 - In `countries.py`, change output directory from `out_dir = f"/Users/nball/Common/Geo/projects/countries/output_countries/{country}"` to a suitable location
 
@@ -73,11 +77,11 @@ Webapp
 
 ## Improvements
 
-- Add setup so data downloading and adding initial layers in the QGIS GUI are done programmatically
+- Add setup so data downloading and adding initial layers in the QGIS GUI are done programmatically: requires resolving known issues with `qgis.processing`
 - Webapp legend
 - Better symbology for some layers: roads, states/provinces
-- Antarctica and Cote d'Ivoire fail
-- Remove large separations in some countries by masking on states/provinces
+- Antarctica and Cote d'Ivoire fail: Antarctica requires a suitable CRS, Code d'Ivoire is character handling
+- Remove large separations in some countries, e.g., France / French Guyana by case-by-case masking on states/provinces
 - Higher resolution data for smaller countries, especially the borders and digital elevation models (DEM)
 - Cloud-native workflow to tile and serve such larger data at an appropriate resolution for the chosen country being viewed, using formats like cloud-optimized GeoTIFF (COG)
 - Other datasets, e.g., Satellite Embedding V1 from DeepMind’s AlphaEarth Foundations GeoAI model
