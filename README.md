@@ -52,7 +52,7 @@ Countries
 
 Webapp
 
-- Create virtualenv, e.g., `.conda` in current directory in VSCode
+- Create virtualenv, e.g., `.venv` in current directory in VSCode
 - `pip install dash-leaflet`
 - In `dash_leaflet_countries.py` set `country`, `datadir` and `assetsdir` in setup section
 - Open web browser, e.g., Chrome (used for webapp)
