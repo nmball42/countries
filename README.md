@@ -77,15 +77,40 @@ Webapp
 
 ## Improvements
 
-- Add setup so data downloading and adding initial layers in the QGIS GUI are done programmatically: requires resolving known issues with `qgis.processing`
+To existing features
+
+- Some webapp layers are offset from the basemap; project layers to Mercator
 - Webapp legend
 - Better symbology for some layers: roads, states/provinces
+- Set layer opacities so no color mixing when overlaid
+- For land cover, can't tell between snow and no data -> set no data to white/gray stripes
+- GDAL and OGR commands fail on countries with spaces in webapp
+- Some webapp countries, e.g., Canada, fail on `gdal_info` `awk` because no gap `(` to `long`: need to parse out of brackets
+- Add setup so data downloading and adding initial layers in the QGIS GUI are done programmatically: requires resolving known issues with `qgis.processing`
 - Antarctica and Cote d'Ivoire fail: Antarctica requires a suitable CRS, Code d'Ivoire is character handling
 - Remove large separations in some countries, e.g., France / French Guyana by case-by-case masking on states/provinces
+- Correct invalid polygons using QGIS’s fix geometries or PostGIS’s ST_MakeValid rather than QGIS Do Not Filter on invalid features
+- Threshold populated places to only large places (abs value not country %) so the names don't get overwritten by small places
+- Show names of features: rivers, etc.
 - Higher resolution data for smaller countries, especially the borders and digital elevation models (DEM)
-- Cloud-native workflow to tile and serve such larger data at an appropriate resolution for the chosen country being viewed, using formats like cloud-optimized GeoTIFF (COG)
 - Other datasets, e.g., Satellite Embedding V1 from DeepMind’s AlphaEarth Foundations GeoAI model
-- Other information such as industries, geology, mark the capital city, some photos, major attractions or events, etc.
+- Other information such as industries, geology, mark the capital city, mountain heights, national parks, World Heritage sites, scale, etc.
 - Country-specific CRSs: some countries such as Canada are still distorted in Mercator projection, and might benefit from a more “looking down at the globe” view, or a country-specific CRS
 - Enable printer-friendly or PDF views for each country
 - Enhance the webapp with pictures, text, etc.
+
+## Extensions
+
+Add new features
+
+- Cloud-native workflow to tile and serve such larger data at an appropriate resolution for the chosen country being viewed, using formats like cloud-optimized GeoTIFF (COG); e.g., TiTiler
+- Project as a QGIS plugin
+- Qgis2web as alternative display to QGIS or webapp
+- Combine DEM data and QGIS 3D for a 3D view of each country
+
+## Data licenses
+
+NaturalEarth = [Public domain](https://www.naturalearthdata.com/about/terms-of-use/)  
+Landscan Global = [CC BY 4.0](https://landscan.ornl.gov/licensing)  
+Koppen Geiger = [CC BY 4.0](https://www.gloh2o.org/koppen/)  
+Daylightmap = [ODbL](https://daylightmap.org/attribution.html)  
