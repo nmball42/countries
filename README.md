@@ -2,7 +2,7 @@
 
 Last updated: Feb 06th 2026
 
-Bookstores have a lot of printed world atlases, which are nice to look at but have the trade off that each country is shown either once with a tradeoff of physical and political attributes, or in multiple maps that are not overlaid. Online maps often have impressive visualizations of particular places, but rarely cover all of the world’s countries at a consistent level. Using online vector and raster data along with QGIS and PyQGIS enables viewing of each of the world’s 258 countries and regions with a variety of combinations of data. Dask-Leaflet enables these per-country views to be displayed in a webapp in the browser.
+Bookstores have a lot of printed world atlases, which are nice to look at but have the trade off that each country is shown either once with a tradeoff of physical and political attributes, or in multiple maps that are not overlaid. Online maps often have impressive visualizations of particular places, but rarely cover all of the world’s countries at a consistent level. Using online vector and raster data along with QGIS and PyQGIS enables viewing of each of the world’s 258 countries and regions with a variety of combinations of data. Dask-Leaflet enables these per-country views to be displayed in a webapp in the browser. ([Blogpost](https://nickballdatascience.com/visualizing-all-of-the-worlds-258-countries-and-regions/))
 
 ## Disclaimer
 
