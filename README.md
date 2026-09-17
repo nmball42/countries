@@ -1,8 +1,10 @@
 # Visualizing all of the world’s 258 countries and regions
 
-Last updated: Feb 06th 2026
+Last updated: Sep 17th 2026
 
-Bookstores have a lot of printed world atlases, which are nice to look at but have the trade off that each country is shown either once with a tradeoff of physical and political attributes, or in multiple maps that are not overlaid. Online maps often have impressive visualizations of particular places, but rarely cover all of the world’s countries at a consistent level. Using online vector and raster data along with QGIS and PyQGIS enables viewing of each of the world’s 258 countries and regions with a variety of combinations of data. Dask-Leaflet enables these per-country views to be displayed in a webapp in the browser. ([Blogpost](https://nickballdatascience.com/visualizing-all-of-the-worlds-258-countries-and-regions/))
+Bookstores have a lot of printed world atlases, which are nice to look at but have the trade off that each country is shown either once with a tradeoff of physical and political attributes, or in multiple maps that are not overlaid. Online maps often have impressive visualizations of particular places, but rarely cover all of the world’s countries at a consistent level. Using online vector and raster data along with QGIS and PyQGIS enables viewing of each of the world’s 258 countries and regions with a variety of combinations of data. Dask-Leaflet enables these per-country views to be displayed in a webapp in the browser.
+
+There is a [blogpost](https://nickballdatascience.com/visualizing-all-of-the-worlds-258-countries-and-regions/) from January 2026 that predates some of the recent improvements, but it is not outdated.
 
 ## Disclaimer
 
@@ -67,7 +69,7 @@ Countries
 - Click Zoom to Layer on the toolbar
 - Display or hide other layers from the country as desired
 
-The country shown can be varied by changing `country = 'Uzbekistan'` to any country named in the `ne_10m_admin_0_countries` layer.
+The country shown can be varied by changing `country = '<country name>'` to any country named in the `ne_10m_admin_0_countries` layer.
 When overlaid on the digital elevation terrain, the colored layers, e.g., `_low`, work best on the b/w `_SR_HR` vs. the color `_HYP_HR_SR`
 
 Webapp
@@ -79,14 +81,12 @@ Webapp
 
 To existing features
 
-- Some webapp layers are offset from the basemap; project layers to Mercator
+- Some layers in the webapp (but not QGIS) are offset from the basemap; project layers to Mercator
 - Webapp legend
-- Better symbology for some layers: roads, states/provinces
 - Set layer opacities so no color mixing when overlaid
-- For land cover, can't tell between snow and no data -> set no data to white/gray stripes
 - GDAL and OGR commands fail on countries with spaces in webapp
 - Some webapp countries, e.g., Canada, fail on `gdal_info` `awk` because no gap `(` to `long`: need to parse out of brackets
-- Add setup so data downloading and adding initial layers in the QGIS GUI are done programmatically: requires resolving known issues with `qgis.processing`
+- Add setup so data downloading and adding initial layers in the QGIS GUI are done programmatically: would require working around known issues with QGIS's `qgis.processing`
 - Antarctica and Cote d'Ivoire fail: Antarctica requires a suitable CRS, Code d'Ivoire is character handling
 - Remove large separations in some countries, e.g., France / French Guyana by case-by-case masking on states/provinces
 - Correct invalid polygons using QGIS’s fix geometries or PostGIS’s ST_MakeValid rather than QGIS Do Not Filter on invalid features
